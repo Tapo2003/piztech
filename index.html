@@ -1,1112 +1,1066 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Metas -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <meta
-      name="keywords"
-      content="HTML5 Template Iteck Multi-Purpose themeforest"
-    />
-    <meta name="description" content="Iteck - Multi-Purpose HTML5 Template" />
-    <meta name="author" content="" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piztech — Fullstack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0a0a0d;
+    --surface:#15151a;
+    --surface-2:#1c1c22;
+    --line:rgba(245,243,238,0.09);
+    --line-strong:rgba(245,243,238,0.16);
+    --ink:#f3f1ec;
+    --ink-dim:#a6a4ad;
+    --ink-faint:#68666f;
+    --crimson:#ea4630;
+    --crimson-dim:#a83022;
+    --gold:#e3b04f;
+    --shadow-glow: 0 0 120px rgba(234,70,48,0.15);
+  }
 
-    <!-- Title  -->
-    <title>Piztech</title>
+  *{margin:0;padding:0;box-sizing:border-box;}
 
-    <!-- Favicon -->
-    <link
-      rel="shortcut icon"
-      href="assets/img/fav2.png"
-      title="Favicon"
-      sizes="16x16"
-    />
+  html{scroll-behavior:smooth;}
 
-    <!-- bootstrap 5 -->
-    <link rel="stylesheet" href="common/assets/css/lib/bootstrap.min.css" />
+  body{
+    background:var(--void);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
 
-    <!-- font family -->
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration:0.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.01ms !important;
+      scroll-behavior:auto !important;
+    }
+  }
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-      rel="stylesheet"
-    />
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
-      rel="stylesheet"
-    />
+  a{color:inherit;text-decoration:none;}
 
-    <!-- fontawesome icons  -->
-    <link rel="stylesheet" href="common/assets/css/lib/all.min.css" />
-    <!-- themify icons  -->
-    <link rel="stylesheet" href="common/assets/css/lib/themify-icons.css" />
-    <!-- ionicons icons  -->
-    <link rel="stylesheet" href="common/assets/css/lib/ionicons.css" />
-    <!-- animate css  -->
-    <link rel="stylesheet" href="common/assets/css/lib/animate.css" />
-    <!-- fancybox popup  -->
-    <link rel="stylesheet" href="common/assets/css/lib/jquery.fancybox.css" />
-    <!-- lity popup  -->
-    <link rel="stylesheet" href="common/assets/css/lib/lity.css" />
-    <!-- swiper slider  -->
-    <link rel="stylesheet" href="common/assets/css/lib/swiper8.min.css" />
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 48px;
+  }
 
-    <!-- common style -->
-    <link rel="stylesheet" href="common/assets/css/common_style.css" />
+  ::selection{background:var(--crimson);color:#fff;}
 
-    <!-- home style -->
-    <link rel="stylesheet" href="assets/css/home_6_style.css" />
+  /* scroll progress */
+  #progress{
+    position:fixed;top:0;left:0;height:2px;
+    background:linear-gradient(90deg,var(--crimson),var(--gold));
+    width:0%;z-index:999;transition:width 0.08s linear;
+  }
 
-    <link rel="stylesheet" href="asset/css/inner_pages.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
+  /* cursor glow */
+  #glow{
+    position:fixed;
+    width:420px;height:420px;
+    border-radius:50%;
+    pointer-events:none;
+    background:radial-gradient(circle,rgba(234,70,48,0.10),transparent 70%);
+    transform:translate(-50%,-50%);
+    z-index:1;
+    top:0;left:0;
+    transition:opacity 0.3s ease;
+    opacity:0;
+  }
 
-  <body class="home-style6 dark-theme">
-    <!-- ====== Start Loading ====== -->
-    <div class="loader-wrap">
-      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <path id="svg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
-      </svg>
+  /* NAV */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    z-index:100;
+    backdrop-filter:blur(14px);
+    background:rgba(10,10,13,0.55);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 48px;
+    max-width:1240px;margin:0 auto;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-size:22px;font-weight:600;
+    letter-spacing:-0.01em;
+    display:flex;align-items:center;gap:8px;
+  }
+  .brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--crimson);
+    box-shadow:0 0 12px var(--crimson);
+  }
+  .navlinks{display:flex;gap:40px;align-items:center;}
+  .navlinks a{
+    font-size:14.5px;color:var(--ink-dim);
+    position:relative;padding-bottom:4px;
+    transition:color 0.25s ease;
+  }
+  .navlinks a::after{
+    content:'';position:absolute;left:0;bottom:0;
+    width:0;height:1px;background:var(--gold);
+    transition:width 0.3s ease;
+  }
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a:hover::after{width:100%;}
+  .nav-cta{
+    padding:10px 22px;
+    border:1px solid var(--line-strong);
+    border-radius:100px;
+    font-size:14px;font-weight:500;
+    transition:all 0.3s ease;
+  }
+  .nav-cta:hover{
+    background:var(--ink);color:var(--void);
+    border-color:var(--ink);
+  }
+  .burger{display:none;}
 
-      <div class="loader-wrap-heading">
-        <div class="load-text">
-          <span>L</span>
-          <span>o</span>
-          <span>a</span>
-          <span>d</span>
-          <span>i</span>
-          <span>n</span>
-          <span>g</span>
-        </div>
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding-top:110px;
+    overflow:hidden;
+    background-image:
+      linear-gradient(rgba(245,243,238,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,243,238,0.035) 1px, transparent 1px);
+    background-size:64px 64px;
+    background-position:center top;
+    mask-image:linear-gradient(180deg, black 0%, black 75%, transparent 100%);
+  }
+  .hero::before{
+    content:'';
+    position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 50% at 30% 20%, rgba(234,70,48,0.10), transparent 60%);
+    z-index:0;
+    pointer-events:none;
+  }
+  .grain{
+    position:fixed;inset:0;
+    z-index:2;pointer-events:none;
+    opacity:0.035;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .blob{
+    position:absolute;
+    width:640px;height:640px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:0.24;
+    z-index:0;
+    animation:drift 22s ease-in-out infinite alternate;
+    will-change:transform;
+  }
+  .blob.b1{background:var(--crimson);top:-160px;right:-100px;}
+  .blob.b2{background:var(--gold);bottom:-220px;left:-160px;animation-delay:-8s;opacity:0.16;}
+  @keyframes drift{
+    0%{transform:translate(0,0) scale(1);}
+    100%{transform:translate(-60px,60px) scale(1.15);}
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:60px;
+    align-items:center;
+    position:relative;z-index:2;
+    width:100%;
+  }
+  .eyebrow{
+    font-size:14.5px;color:var(--ink-dim);
+    margin-bottom:22px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow .line{width:28px;height:1px;background:var(--gold);}
+
+  .hero h1{
+    font-size:clamp(46px,6vw,84px);
+    color:var(--ink);
+  }
+  .hero h1 .reveal-word{
+    display:inline-block;
+    overflow:hidden;
+    vertical-align:top;
+  }
+  .hero h1 .reveal-word span{
+    display:inline-block;
+    transform:translateY(110%);
+    animation:riseUp 0.9s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  .hero h1 em{
+    font-style:italic;font-weight:500;color:var(--crimson);
+  }
+  @keyframes riseUp{to{transform:translateY(0);}}
+
+  .hero p.lede{
+    margin-top:26px;
+    max-width:480px;
+    font-size:17.5px;
+    line-height:1.7;
+    color:var(--ink-dim);
+    opacity:0;
+    animation:fadeUp 0.8s ease forwards 0.9s;
+  }
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .hero-actions{
+    margin-top:38px;
+    display:flex;gap:16px;align-items:center;
+    opacity:0;
+    animation:fadeUp 0.8s ease forwards 1.05s;
+  }
+  .btn-primary{
+    position:relative;
+    padding:15px 30px;
+    background:var(--crimson);
+    color:#fff;
+    border-radius:100px;
+    font-weight:600;font-size:15px;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow:0 8px 30px rgba(234,70,48,0.28);
+  }
+  .btn-primary:hover{box-shadow:0 12px 40px rgba(234,70,48,0.42);}
+  .btn-ghost{
+    padding:15px 26px;
+    border:1px solid var(--line-strong);
+    border-radius:100px;
+    font-size:15px;font-weight:500;
+    color:var(--ink);
+    transition:all 0.3s ease;
+  }
+  .btn-ghost:hover{background:var(--surface-2);border-color:var(--ink-faint);}
+
+  .hero-portrait{
+    position:relative;
+    max-width:420px;
+    margin-left:auto;
+    opacity:0;
+    perspective:800px;
+    animation:portraitIn 1s cubic-bezier(.22,1,.36,1) forwards 0.5s;
+  }
+  .portrait-frame{transition:transform 0.3s ease-out;}
+  @keyframes portraitIn{
+    from{opacity:0;transform:scale(0.9) translateY(20px);}
+    to{opacity:1;transform:scale(1) translateY(0);}
+  }
+  .portrait-ring{
+    position:absolute;
+    inset:-14px;
+    border-radius:32px;
+    padding:1px;
+    background:conic-gradient(from 0deg, var(--crimson), var(--gold), transparent 40%, var(--crimson));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    opacity:0.55;
+    animation:spinRing 10s linear infinite;
+    z-index:0;
+  }
+  @keyframes spinRing{to{transform:rotate(360deg);}}
+  .corner{
+    position:absolute;width:22px;height:22px;
+    border:1.5px solid var(--gold);
+    opacity:0.8;z-index:3;
+  }
+  .corner.tl{top:-10px;left:-10px;border-right:none;border-bottom:none;border-radius:6px 0 0 0;}
+  .corner.br{bottom:-10px;right:-10px;border-left:none;border-top:none;border-radius:0 0 6px 0;}
+  .portrait-frame{
+    position:relative;
+    border-radius:24px;
+    overflow:hidden;
+    aspect-ratio:4/5;
+    border:1px solid var(--line-strong);
+    box-shadow:0 30px 80px -20px rgba(0,0,0,0.6), 0 0 60px rgba(234,70,48,0.12);
+    z-index:1;
+  }
+  .portrait-frame img{
+    width:100%;height:100%;object-fit:cover;object-position:center 20%;
+    filter:saturate(1.05) contrast(1.05);
+  }
+  .portrait-frame::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 55%, rgba(10,10,13,0.75) 100%);
+  }
+  .float-card{
+    position:absolute;
+    bottom:22px;left:-32px;
+    background:var(--surface);
+    border:1px solid var(--line-strong);
+    border-radius:16px;
+    padding:16px 20px;
+    display:flex;align-items:center;gap:12px;
+    z-index:3;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    animation:floaty 4.5s ease-in-out infinite;
+  }
+  @keyframes floaty{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+  .avatar-wrap{
+    position:relative;
+    flex-shrink:0;
+  }
+  .avatar-thumb{
+    width:42px;height:42px;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    border:1px solid var(--line-strong);
+  }
+  .float-card .pulse{
+    position:absolute;
+    bottom:-2px;right:-2px;
+    width:12px;height:12px;border-radius:50%;
+    background:#3ddc84;
+    border:2px solid var(--surface);
+    box-shadow:0 0 0 rgba(61,220,132,0.5);
+    animation:pulseDot 2s infinite;
+  }
+  @keyframes pulseDot{
+    0%{box-shadow:0 0 0 0 rgba(61,220,132,0.5);}
+    70%{box-shadow:0 0 0 10px rgba(61,220,132,0);}
+    100%{box-shadow:0 0 0 0 rgba(61,220,132,0);}
+  }
+  .float-card .txt small{display:block;color:var(--ink-faint);font-size:11.5px;}
+  .float-card .txt strong{font-size:14px;}
+
+  /* marquee */
+  .marquee-wrap{
+    margin-top:100px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+    overflow:hidden;
+    position:relative;
+    z-index:2;
+  }
+  .marquee-track{
+    display:flex;gap:60px;
+    width:max-content;
+    animation:scrollLeft 26s linear infinite;
+  }
+  .marquee-track span{
+    font-family:'Fraunces',serif;
+    font-size:20px;
+    color:var(--ink-faint);
+    white-space:nowrap;
+    display:flex;align-items:center;gap:60px;
+  }
+  .marquee-track span i{
+    font-style:normal;color:var(--crimson);
+    font-size:8px;
+  }
+  @keyframes scrollLeft{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* generic section */
+  section{
+    padding:150px 0;
+    position:relative;
+  }
+  .section-head{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:end;
+    gap:40px;
+    margin-bottom:70px;
+  }
+  .section-head .tag{
+    color:var(--ink-dim);font-size:15px;margin-bottom:14px;
+  }
+  .section-head h2{
+    font-size:clamp(32px,4vw,52px);
+    max-width:640px;
+  }
+  .section-head p{
+    color:var(--ink-dim);
+    max-width:320px;
+    font-size:15.5px;
+    line-height:1.6;
+    padding-bottom:6px;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(36px);
+    transition:opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ABOUT */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:80px;
+  }
+  .pull{
+    font-size:clamp(24px,2.6vw,34px);
+    line-height:1.4;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .pull .accent{color:var(--crimson);font-style:italic;font-family:'Fraunces',serif;}
+  .about-body p{
+    margin-top:28px;
+    color:var(--ink-dim);
+    font-size:16px;
+    line-height:1.8;
+    max-width:560px;
+  }
+  .stack-tags{
+    margin-top:34px;
+    display:flex;flex-wrap:wrap;gap:10px;
+  }
+  .stack-tags span{
+    padding:8px 16px;
+    border:1px solid var(--line-strong);
+    border-radius:100px;
+    font-size:13.5px;
+    color:var(--ink-dim);
+  }
+
+  .stat-col{
+    border-left:1px solid var(--line);
+    padding-left:40px;
+    display:flex;flex-direction:column;
+    gap:38px;
+  }
+  .stat{}
+  .stat .num{
+    font-family:'Fraunces',serif;
+    font-size:56px;font-weight:600;
+    color:var(--ink);
+    display:flex;align-items:baseline;gap:4px;
+  }
+  .stat .num .suffix{font-size:28px;color:var(--gold);}
+  .stat .label{color:var(--ink-faint);font-size:14.5px;margin-top:6px;}
+
+  /* SERVICES */
+  .service-row{
+    display:grid;
+    grid-template-columns:60px 1fr 1fr 24px;
+    align-items:center;
+    gap:30px;
+    padding:34px 0;
+    border-top:1px solid var(--line);
+    cursor:pointer;
+    transition:background 0.4s ease;
+  }
+  .services .service-row:last-child{border-bottom:1px solid var(--line);}
+  .service-row:hover{background:rgba(245,243,238,0.02);}
+  .service-row .idx{
+    font-family:'Fraunces',serif;
+    font-size:14px;color:var(--ink-faint);
+  }
+  .service-row h3{
+    font-size:26px;font-weight:500;
+    transition:color 0.3s ease;
+  }
+  .service-row:hover h3{color:var(--crimson);}
+  .service-row .desc{
+    color:var(--ink-dim);
+    font-size:15px;line-height:1.7;
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition:max-height 0.5s ease, opacity 0.4s ease;
+  }
+  .service-row.open .desc{max-height:120px;opacity:1;}
+  .service-row .arrow{
+    width:24px;height:24px;
+    position:relative;
+    flex-shrink:0;
+  }
+  .service-row .arrow::before,
+  .service-row .arrow::after{
+    content:'';position:absolute;
+    background:var(--ink-dim);
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    transition:transform 0.35s ease;
+  }
+  .service-row .arrow::before{width:14px;height:1.5px;}
+  .service-row .arrow::after{width:1.5px;height:14px;}
+  .service-row.open .arrow::after{transform:translate(-50%,-50%) rotate(90deg) scale(0);}
+
+  /* PORTFOLIO */
+  .filters{
+    display:flex;gap:10px;margin-bottom:50px;flex-wrap:wrap;
+  }
+  .filter-btn{
+    padding:9px 20px;
+    border:1px solid var(--line-strong);
+    border-radius:100px;
+    font-size:14px;color:var(--ink-dim);
+    background:transparent;
+    cursor:pointer;
+    transition:all 0.3s ease;
+  }
+  .filter-btn.active, .filter-btn:hover{
+    background:var(--ink);color:var(--void);border-color:var(--ink);
+  }
+  .grid-portfolio{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:24px;
+  }
+  .pf-card{
+    position:relative;
+    border-radius:18px;
+    overflow:hidden;
+    grid-column:span 3;
+    aspect-ratio:4/3;
+    border:1px solid var(--line);
+    transition:transform 0.15s ease;
+  }
+  .pf-card.wide{grid-column:span 6;aspect-ratio:16/8;}
+  .pf-card img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform 0.7s cubic-bezier(.22,1,.36,1), filter 0.5s ease;
+    filter:saturate(0.85) brightness(0.85);
+  }
+  .pf-card:hover img{transform:scale(1.06);filter:saturate(1) brightness(0.95);}
+  .pf-overlay{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:28px;
+    background:linear-gradient(180deg,transparent 40%, rgba(8,8,10,0.92) 100%);
+  }
+  .pf-overlay .tag-pill{
+    align-self:flex-start;
+    font-size:12px;color:var(--gold);
+    border:1px solid rgba(227,176,79,0.4);
+    padding:5px 12px;border-radius:100px;
+    margin-bottom:auto;
+    background:rgba(227,176,79,0.08);
+  }
+  .pf-overlay h4{
+    font-size:22px;font-weight:500;
+    transform:translateY(8px);
+    opacity:0.92;
+  }
+  .pf-overlay .view{
+    font-size:13.5px;color:var(--ink-dim);
+    margin-top:6px;
+    display:flex;align-items:center;gap:8px;
+    max-height:0;opacity:0;overflow:hidden;
+    transition:max-height 0.4s ease, opacity 0.4s ease;
+  }
+  .pf-card:hover .view{max-height:30px;opacity:1;}
+
+  /* CONTACT */
+  .contact-box{
+    border:1px solid var(--line-strong);
+    border-radius:32px;
+    padding:90px 70px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    background:radial-gradient(ellipse at top, rgba(234,70,48,0.08), transparent 60%);
+  }
+  .contact-box h2{
+    font-size:clamp(34px,5vw,64px);
+    max-width:760px;
+    margin:0 auto;
+  }
+  .contact-box p{
+    color:var(--ink-dim);
+    margin-top:22px;
+    font-size:16.5px;
+  }
+  .contact-actions{
+    margin-top:44px;
+    display:flex;gap:18px;justify-content:center;flex-wrap:wrap;
+  }
+  .contact-email{
+    margin-top:50px;
+    font-family:'Fraunces',serif;
+    font-size:clamp(22px,3vw,34px);
+    display:inline-flex;align-items:center;gap:14px;
+    border-bottom:1px solid var(--line-strong);
+    padding-bottom:10px;
+    transition:border-color 0.3s ease, color 0.3s ease;
+  }
+  .contact-email:hover{border-color:var(--crimson);color:var(--crimson);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:44px 0;
+  }
+  .footer-row{
+    display:flex;justify-content:space-between;align-items:center;
+    color:var(--ink-faint);font-size:14px;
+  }
+  .footer-social{display:flex;gap:26px;}
+  .footer-social a{color:var(--ink-dim);transition:color 0.3s ease;}
+  .footer-social a:hover{color:var(--crimson);}
+
+  .magnetic{will-change:transform;}
+
+  @media (max-width:920px){
+    .wrap{padding:0 24px;}
+    nav{padding:18px 24px;}
+    .navlinks{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-portrait{order:-1;max-width:320px;margin:0 auto;}
+    .float-card{left:8px;}
+    .about-grid{grid-template-columns:1fr;gap:50px;}
+    .stat-col{flex-direction:row;flex-wrap:wrap;border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:30px;gap:40px;}
+    .service-row{grid-template-columns:30px 1fr 24px;}
+    .service-row .desc{grid-column:1/4;}
+    .grid-portfolio{grid-template-columns:repeat(2,1fr);}
+    .pf-card{grid-column:span 2;}
+    .pf-card.wide{grid-column:span 2;}
+    .contact-box{padding:60px 28px;}
+    .section-head{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="glow"></div>
+<div class="grain"></div>
+
+<header>
+  <nav>
+    <a href="#" class="brand"><span class="dot"></span>Piztech</a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta magnetic">Start a project</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="line"></span>Fullstack developer · Lagos, Nigeria</div>
+      <h1>
+        <span class="reveal-word"><span style="animation-delay:.05s">I</span></span>
+        <span class="reveal-word"><span style="animation-delay:.12s">build</span></span>
+        <span class="reveal-word"><span style="animation-delay:.19s">products</span></span><br>
+        <span class="reveal-word"><span style="animation-delay:.26s">that</span></span>
+        <span class="reveal-word"><span style="animation-delay:.33s">feel</span></span>
+        <span class="reveal-word"><em><span style="animation-delay:.40s">inevitable.</span></em></span>
+      </h1>
+      <p class="lede">Four years turning briefs into fast, reliable web products — from client-facing marketing sites to the backend systems that run them. Currently taking on select new projects.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary magnetic">See my work</a>
+        <a href="https://wa.me/2348062965917" class="btn-ghost magnetic">Message on WhatsApp</a>
       </div>
     </div>
-
-    <div id="scrollsmoother-container">
-      <!--  Start top navbar  -->
-      <div class="top-navbar-style6">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="links">
-                <a href="#"> CONTACT ON WHATSAPP </a>
-                <span class="icon mx-3"> </span>
-                <a href="#"> 08062965917 </a>
-              </div>
-            </div>
-            <div class="col-lg-6 text-lg-end mt-4 mt-lg-0">
-              <div class="links">
-                <a href="#"> OPENING HOURS </a>
-                <span class="icon mx-3"> </span>
-                <a href="#"> 08 AM - 10 PM </a>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="hero-portrait">
+      <div class="portrait-ring"></div>
+      <span class="corner tl"></span>
+      <span class="corner br"></span>
+      <div class="portrait-frame">
+        <img src="profile.png" alt="Portrait">
       </div>
-      <!--  End top navbar  -->
-
-      <!--  Start header  -->
-      <header class="tc-header-style6">
-        <!-- <nav class="navbar navbar-expand-lg navbar-light tc-navbar-style6">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              <img src="assets/img/logo.png" alt="" class="lt_item" />
-              <img
-                src="assets/img/logo2.jpg"
-                alt=""
-                class="dr_item"
-                style="border-radius: 35px"
-              />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon" style="color: white"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse mt-4 mt-lg-0"
-              id="navbarSupportedContent"
-            >
-              <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#0"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#works">works</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#about">about</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="https://swak-html.themescamp.com/inner_pages/page_blog_masonry.html"
-                    >news</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="https://swak-html.themescamp.com/inner_pages/page_contact.html"
-                    >contact</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav> -->
-
-        <div class="content">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-lg-5">
-                <div class="img wow fadeInUp slow">
-                  <img src="assets/img/webdev.jpg" alt="" class="main-img" />
-                  <!-- <img
-                    src="assets/img/symbol_wh.png"
-                    alt=""
-                    class="float-img"
-                    data-speed="1"
-                    data-lag="0.7"
-                  /> -->
-                </div>
-              </div>
-              <div class="col-lg-7">
-                <div class="info wow fadeInUp slow" data-wow-delay="0.2s">
-                  <h1 class="">
-                    I Build <br />
-                    Web Solutions
-                  </h1>
-                  <a
-                    href="#project"
-                    class="butn_arrow_circle mt-50 hover-white hover-bg-red1"
-                  >
-                    My Websites
-                    <span class="arrow">
-                      <!-- <i class="far fa-long-arrow-right"></i> -->
-                      <i class="fa-solid fa-arrow-down"></i>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- <div class="tc-awards-slider6">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide btn_wrapper">
-                  <a href="#" class="award-card btn-item">
-                    <p class="text-uppercase">Site of the day</p>
-                    <div class="btm-inf">
-                      <p>2023</p>
-                      <img src="assets/img/logos/01.png" alt="" class="logo" />
-                    </div>
-                  </a>
-                </div>
-                <div class="swiper-slide btn_wrapper">
-                  <a href="#" class="award-card btn-item">
-                    <p class="text-uppercase">Site of the day</p>
-                    <div class="btm-inf">
-                      <p>2023</p>
-                      <img src="assets/img/logos/02.png" alt="" class="logo" />
-                    </div>
-                  </a>
-                </div>
-                <div class="swiper-slide btn_wrapper">
-                  <a href="#" class="award-card btn-item">
-                    <p class="text-uppercase">Site of the day</p>
-                    <div class="btm-inf">
-                      <p>2021</p>
-                      <img src="assets/img/logos/03.png" alt="" class="logo" />
-                    </div>
-                  </a>
-                </div>
-                <div class="swiper-slide btn_wrapper">
-                  <a href="#" class="award-card btn-item">
-                    <p class="text-uppercase">Site of the day</p>
-                    <div class="btm-inf">
-                      <p>2020</p>
-                      <img src="assets/img/logos/04.png" alt="" class="logo" />
-                    </div>
-                  </a>
-                </div>
-                <div class="swiper-slide btn_wrapper">
-                  <a href="#" class="award-card btn-item">
-                    <p class="text-uppercase">Site of the day</p>
-                    <div class="btm-inf">
-                      <p>2019</p>
-                      <img src="assets/img/logos/05.png" alt="" class="logo" />
-                    </div>
-                  </a>
-                </div>
-                <div class="swiper-slide btn_wrapper">
-                  <a href="#" class="award-card btn-item">
-                    <p class="text-uppercase">Site of the day</p>
-                    <div class="btm-inf">
-                      <p>2018</p>
-                      <img src="assets/img/logos/06.png" alt="" class="logo" />
-                    </div>
-                  </a>
-                </div>
-                <div class="swiper-slide btn_wrapper">
-                  <a href="#" class="award-card btn-item">
-                    <p class="text-uppercase">Site of the day</p>
-                    <div class="btm-inf">
-                      <p>2017</p>
-                      <img src="assets/img/logos/07.png" alt="" class="logo" />
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div> -->
-          </div>
+      <div class="float-card">
+        <div class="avatar-wrap">
+          <img src="profile1.PNG" alt="Piztech" class="avatar-thumb">
+          <span class="pulse"></span>
         </div>
-
-        <div class="lines">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </header>
-      <!--  Start header  -->
-
-      <!--Contents-->
-      <main>
-        <!--  Start about  -->
-
-        <section class="tc-about-style6">
-          <div class="container">
-            <div class="row gx-0 align-items-center justify-content-between">
-              <div class="col-lg-5">
-                <div class="info wow fadeInUp slow">
-                  <h6 class="color-red1 fsz-20 text-uppercase mb-30 fw-bold">
-                    <span class="icon me-2"> </span> About Me
-                  </h6>
-                  <h2 class="fsz-50 fw-600 mb-30">
-                    Turning Ideas into Interactive, Scalable, and Stunning Web
-                    Experiences.
-                  </h2>
-                  <div class="text fsz-16 color-666 mb-50">
-                    Hi, I’m Piz_tech — a Fullstack developer with years of
-                    experience in my craft. With over 4 years of experience, I
-                    specialize in building visually appealing, responsive, and
-                    user-friendly websites. I’ve developed a variety of web
-                    applications, from landing pages to complex systems, using
-                    modern technologies including HTML, CSS, Bootstrap,
-                    JavaScript, React.js, jQuery, AJAX, PHP, MySQL, and Laravel.
-                    I'm currently open to new website development opportunities
-                    and excited to bring your ideas to life. Let’s build
-                    something great together. .
-                  </div>
-                  <p class="fsz-14 color-666">
-                    <strong class="color-000"> Message me on Whatsapp</strong>.
-                    We can answer for all your questions.
-                  </p>
-                  <h5 class="fsz-22 color-red1 sub_font fw-600 mt-10">
-                    08062965917
-                  </h5>
-                  <!-- <a
-                    href="#"
-                    class="butn_arrow_circle mt-40 hover-white hover-bg-red1"
-                  >
-                    Learn More
-                    <span class="arrow">
-                      <i class="far fa-long-arrow-right"></i>
-                    </span>
-                  </a> -->
-                </div>
-              </div>
-              <div class="col-lg-5">
-                <div class="img" data-speed="1" data-lag="0.7">
-                  <img
-                    src="assets/img/tech_guy.jpg"
-                    alt=""
-                    style="border-radius: 200px"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="lines">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </section>
-        <!--  End about  -->
-
-        <!--  Start services  -->
-        <section class="tc-services-style6">
-          <div class="container">
-            <div class="section-head text-center mb-50 js-splittext-lines">
-              <h6 class="color-red1 fsz-20 text-uppercase mb-30 fw-bold">
-                <span class="icon me-2"> </span> services
-                <span class="icon ms-2"> </span>
-              </h6>
-              <h2 class="fsz-50 fw-600 mb-30">Our solution & services</h2>
-            </div>
-            <div class="row">
-              <div class="col-lg-4">
-                <a href="#" class="service-card wow fadeInUp slow">
-                  <span class="float-icon">
-                    <!-- <i class="ti-arrow-top-right"></i> -->
-                  </span>
-                  <div class="img">
-                    <img src="assets/img/icons/1.png" alt="" />
-                  </div>
-                  <div class="info">
-                    <h5 class="fsz-24 fw-600">Strategic Consulting</h5>
-                    <div class="text">
-                      Must work closely with contractors, subcontractors, &
-                      professional
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a
-                  href="#"
-                  class="service-card wow fadeInUp slow"
-                  data-wow-delay="0.2s"
-                >
-                  <span class="float-icon">
-                    <!-- <i class="ti-arrow-top-right"></i> -->
-                  </span>
-                  <div class="img">
-                    <img src="assets/img/icons/2.png" alt="" />
-                  </div>
-                  <div class="info">
-                    <h5 class="fsz-24 fw-600">Business Growth</h5>
-                    <div class="text">
-                      Must work closely with contractors, subcontractors, &
-                      professional
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a
-                  href="#"
-                  class="service-card wow fadeInUp slow"
-                  data-wow-delay="0.4s"
-                >
-                  <span class="float-icon">
-                    <!-- <i class="ti-arrow-top-right"></i> -->
-                  </span>
-                  <div class="img">
-                    <img src="assets/img/icons/3.png" alt="" />
-                  </div>
-                  <div class="info">
-                    <h5 class="fsz-24 fw-600">Support & Planning</h5>
-                    <div class="text">
-                      Must work closely with contractors, subcontractors, &
-                      professional
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="#" class="service-card wow fadeInUp slow">
-                  <span class="float-icon">
-                    <!-- <i class="ti-arrow-top-right"></i> -->
-                  </span>
-                  <div class="img">
-                    <img src="assets/img/icons/4.png" alt="" />
-                  </div>
-                  <div class="info">
-                    <h5 class="fsz-24 fw-600">Digital Marketing</h5>
-                    <div class="text">
-                      Must work closely with contractors, subcontractors, &
-                      professional
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a
-                  href="#"
-                  class="service-card wow fadeInUp slow"
-                  data-wow-delay="0.2s"
-                >
-                  <span class="float-icon">
-                    <!-- <i class="ti-arrow-top-right"></i> -->
-                  </span>
-                  <div class="img">
-                    <img src="assets/img/icons/5.png" alt="" />
-                  </div>
-                  <div class="info">
-                    <h5 class="fsz-24 fw-600">Web Solutions</h5>
-                    <div class="text">
-                      Must work closely with contractors, subcontractors, &
-                      professional
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a
-                  href="#"
-                  class="service-card wow fadeInUp slow"
-                  data-wow-delay="0.4s"
-                >
-                  <span class="float-icon">
-                    <!-- <i class="ti-arrow-top-right"></i> -->
-                  </span>
-                  <div class="img">
-                    <img src="assets/img/icons/6.png" alt="" />
-                  </div>
-                  <div class="info">
-                    <h5 class="fsz-24 fw-600">Branding & Design</h5>
-                    <div class="text">
-                      Must work closely with contractors, subcontractors, &
-                      professional
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!--  End services  -->
-
-        <main>
-          <!--  Start portfolio-grid  -->
-          <section
-            class="tc-portfolio-masonry-style1 pt-120 pb-120"
-            id="project"
-          >
-            <div class="container">
-              <div class="row">
-                <div class="header-content text-center">
-                  <div class="container">
-                    <h2 class="fsz-70 text-capitalize" style="color: white">
-                      Portfolio Showcase
-                    </h2>
-                  </div>
-                </div>
-
-                <div class="col-lg-4">
-                  <div class="portfolio-card mb-30 wow fadeInUp slow">
-                    <a
-                      href="https://elysian-psi.vercel.app"
-                      class="fsz-24 fw-600 hover-underline"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img
-                          src="asset/img/projects/catalystmedia.jpeg"
-                          alt=""
-                          style="width: 700px; height: 525"
-                        />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a
-                              href="https://catalystmediafoundation.vercel.app/"
-                              class="fsz-24 fw-600 hover-underline"
-                            >
-                              The Catalyst Media Foundation, inc
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <div class="col-lg-4">
-                  <div class="portfolio-card mb-30 wow fadeInUp slow">
-                    <a
-                      href="https://homesteadhealth.vercel.app/"
-                      class="fsz-24 fw-600 hover-underline"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img
-                          src="asset/img/projects/homestead.png"
-                          alt=""
-                          style="width: 700px; height: 525"
-                        />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a
-                              href="https://homesteadhealth.vercel.app/"
-                              class="fsz-24 fw-600 hover-underline"
-                            >
-                              Homestead Healthcare Services, inc.
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <div class="col-lg-4">
-                  <div class="portfolio-card mb-30 wow fadeInUp slow">
-                    <a
-                      href="https://elysian-psi.vercel.app"
-                      class="fsz-24 fw-600 hover-underline"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img
-                          src="asset/img/projects/elysian.jpg"
-                          alt=""
-                          style="width: 700px; height: 525"
-                        />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a
-                              href="https://elysian-psi.vercel.app"
-                              class="fsz-24 fw-600 hover-underline"
-                            >
-                              Elysian Capital
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div
-                    class="portfolio-card mb-30 wow fadeInUp slow"
-                    data-wow-delay="0.2s"
-                  >
-                    <a
-                      href="https://g-h-m-cuisine-g6vb.vercel.app/"
-                      class="fsz-24 fw-600 hover-underline"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img src="asset/img/projects/ghm.jpg" alt="" />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a
-                              href="https://g-h-m-cuisine-g6vb.vercel.app/"
-                              class="fsz-24 fw-600 hover-underline"
-                            >
-                              G.H.M CUSINE
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div
-                    class="portfolio-card mb-30 wow fadeInUp slow"
-                    data-wow-delay="0.4s"
-                  >
-                    <a
-                      href="https://janoktrading.com/"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img
-                          src="asset/img/projects/jano_trading_with_bgc.png"
-                          alt=""
-                        />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a href="#" class="fsz-24 fw-600 hover-underline">
-                              Jano Trading
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="portfolio-card mb-30 wow fadeInUp slow">
-                    <a
-                      href="https://tenderbondscareservices.com/"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img src="asset/img/projects/tender.png" alt="" />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a href="#" class="fsz-24 fw-600 hover-underline">
-                              Tender Bonds Care
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div
-                    class="portfolio-card mb-30 wow fadeInUp slow"
-                    data-wow-delay="0.2s"
-                  >
-                    <a
-                      href="https://mtlondonservices.co.uk/"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img src="asset/img/projects/mtlondon.png" alt="" />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a href="#" class="fsz-24 fw-600 hover-underline">
-                              M & T London Service
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div
-                    class="portfolio-card mb-30 wow fadeInUp slow"
-                    data-wow-delay="0.4s"
-                  >
-                    <a
-                      href="https://jaytec.com.ng/onwardcars/"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img src="asset/img/projects/onward.jpg" alt="" />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a href="#" class="fsz-24 fw-600 hover-underline">
-                              Onwards Cars
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="portfolio-card mb-30 wow fadeInUp slow">
-                    <a
-                      href="https://jaytec.com.ng/Arise-Thrift/"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img src="asset/img/projects/arise.jpg" alt="" />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a href="#" class="fsz-24 fw-600 hover-underline">
-                              Arise Thrift Collection
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div
-                    class="portfolio-card mb-30 wow fadeInUp slow"
-                    data-wow-delay="0.2s"
-                  >
-                    <a
-                      href="https://pat-mc-carney-auto-sales.vercel.app/"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img src="asset/img/projects/bushan.jpg" alt="" />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a href="#" class="fsz-24 fw-600 hover-underline">
-                              Bushan Car
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div
-                    class="portfolio-card mb-30 wow fadeInUp slow"
-                    data-wow-delay="0.4s"
-                  >
-                    <a
-                      href="https://californiamotoc-9pfv.vercel.app/"
-                      class="fsz-24 fw-600 hover-underline"
-                    >
-                      <div class="img overflow-hidden img-cover">
-                        <img
-                          src="asset/img/projects/californiaupdate.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div class="info">
-                        <div class="cont">
-                          <!-- <p class="fsz-14 text-uppercase mb-10">design, ux</p> -->
-                          <h5>
-                            <a href="#" class="fsz-24 fw-600 hover-underline">
-                              California Moto
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="text-center mt-50">
-                <div class="button_su border-0 rounded-pill">
-                  <span class="su_button_circle bg-000 desplode-circle"></span>
-                  <a
-                    href="#"
-                    class="butn text-uppercase border-1 border_light border button_su_inner bg-blue1 py-3 px-5 rounded-pill"
-                  >
-                    <span class="button_text_container fsz-14 text-white">
-                      send message
-                    </span>
-                  </a>
-                </div>
-              </div> -->
-            </div>
-          </section>
-          <!--  End portfolio-grid  -->
-        </main>
-
-        <!--  Start projects  -->
-        <section class="tc-projects-style6 wow fadeInUp slow">
-          <div class="row gx-0">
-            <div class="col-lg-6">
-              <div class="project-card">
-                <div class="img img-cover">
-                  <img src="assets/img/proj1.png" alt="" />
-                </div>
-
-                <img src="assets/img/symbol_2.png" alt="" class="pattern" />
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="project-card active">
-                <div class="img img-cover">
-                  <img src="assets/img/proj2.png" alt="" />
-                </div>
-                <div class="info">
-                  <div class="row align-items-center">
-                    <div class="col-lg-7">
-                      <h2 class="fsz-40">
-                        I Would Build <br />
-                        Any Type Of Website
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-                <!-- <img src="assets/img/symbol_3.png" alt="" class="pattern" /> -->
-              </div>
-            </div>
-          </div>
-        </section>
-        <!--  End projects  -->
-
-        <!--  End marqee  -->
-
-        <!--  Start clients  -->
-
-        <!--  End clients  -->
-
-        <!--  Start revenue  -->
-
-        <!--  End revenue  -->
-
-        <!--  Start testimonials  -->
-        <section class="tc-testimonials-style6">
-          <div class="container">
-            <div class="content">
-              <div class="section-head text-center mb-80 js-splittext-lines">
-                <h6 class="color-red1 fsz-14 text-uppercase mb-30 fw-bold">
-                  <span class="icon me-2"> &gt; </span> testimonials
-                  <span class="icon ms-2"> &lt; </span>
-                </h6>
-                <h2 class="fsz-50 fw-600">User Feedbacks</h2>
-              </div>
-              <div class="testimonials-slider6 wow fadeInUp slow">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="testi-card">
-                      <div class="text fsz-22">
-                        Piztech - A studio with passionate, professional and
-                        full creativity. Much more than what i’m expect. Great
-                        services, high quality product and affordable price. I’m
-                        extremly satisfied!.”
-                      </div>
-                      <div class="btm-info">
-                        <div class="row align-items-center">
-                          <div class="col-lg-7">
-                            <div class="client-card d-flex align-items-center">
-                              <div
-                                class="img icon-45 rounded-circle overflow-hidden img-cover me-3"
-                              >
-                                <img src="assets/img/testi/1.jpg" alt="" />
-                              </div>
-                              <div class="inf">
-                                <h6 class="fsz-16 fw-bold mb-1">
-                                  Williams James
-                                </h6>
-                                <!-- <p class="fsz-14 color-666">
-                                  CEO of
-                                  <a href="#" class="color-red1"> Zumar </a>
-                                </p> -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
-                            <div class="stars color-red1">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                            </div>
-                          </div>
-                          <!-- <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
-                            <div class="button_su border-0">
-                              <span
-                                class="su_button_circle bg-000 desplode-circle"
-                              ></span>
-                              <a
-                                href="https://youtu.be/pGbIOC83-So?t=21"
-                                data-lity=""
-                                class="butn text-capitalize border-0 button_su_inner bg-red1 py-3 px-5"
-                              >
-                                <span
-                                  class="button_text_container text-white fsz-14"
-                                >
-                                  Play Video <i class="ti-control-play ms-1"></i
-                                ></span>
-                              </a>
-                            </div>
-                          </div> -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testi-card">
-                      <div class="text fsz-22">
-                        “Piztech - A Competent, Hardworing and reliable website
-                        developer. Much more than what i’m expecting. I highly
-                        recommend Piztech”
-                      </div>
-                      <div class="btm-info">
-                        <div class="row align-items-center">
-                          <div class="col-lg-7">
-                            <div class="client-card d-flex align-items-center">
-                              <div
-                                class="img icon-45 rounded-circle overflow-hidden img-cover me-3"
-                              >
-                                <img src="assets/img/testi/2.jpg" alt="" />
-                              </div>
-                              <div class="inf">
-                                <h6 class="fsz-16 fw-bold mb-1">Mason Mount</h6>
-                                <!-- <p class="fsz-14 color-666">
-                                  Vice President of
-                                  <a href="#" class="color-red1"> Envato </a>
-                                </p> -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
-                            <div class="stars color-red1">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="text-center">
-                  <div class="slider-controls">
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!--  End testimonials  -->
-      </main>
-      <!--End-Contents-->
-
-      <!--  Start footer  -->
-      <footer class="tc-inner-footer-style1">
-        <div class="container">
-          <div class="foot-content">
-            <div class="info text-center">
-              <p class="fsz-30 mb-10 text-uppercase">got a project in mind?</p>
-              <h2 class="mb-80">
-                <a href="page_contact.html"> let’s talk! </a>
-              </h2>
-              <p>
-                <a
-                  href="#"
-                  class="fsz-16 color-999 text-uppercase hover-blue1 lh-6"
-                >
-                  Discord Username: piztech
-                </a>
-              </p>
-              <!-- <p>
-                <a
-                  href="#"
-                  class="fsz-16 color-999 text-uppercase hover-blue1 lh-6"
-                >
-                  701 Hoefner Avenue, Los Angeles, CA 90022
-                </a>
-              </p> -->
-              <p>
-                <a
-                  href="#"
-                  class="fsz-16 color-999 text-uppercase hover-blue1 lh-6"
-                >
-                  WHATSAPP 08062965917
-                </a>
-              </p>
-              <div class="social-icons js-splittext-lines">
-                <a href="#"> <i class="lab la-twitter"></i> </a>
-                <a href="#"> <i class="lab la-facebook-f"></i> </a>
-                <a href="#"> <i class="lab la-instagram"></i> </a>
-                <a href="#"> <i class="lab la-youtube"></i> </a>
-              </div>
-            </div>
-          </div>
-          <div class="foot">
-            <div class="row">
-              <div class="col-lg-3 text-center text-lg-start">
-                <p class="fsz-14 color-999 text-uppercase">
-                  © 2025 By <a href="#" class="text-white"> piztech </a>
-                </p>
-              </div>
-              <!-- <div class="col-lg-6">
-                <div class="links my-3 my-lg-0">
-                  <a href="page_services.html"> services </a>
-                  <a href="#works"> works </a>
-                  <a href="page_about_us.html"> about </a>
-                  <a href="page_blog_list.html"> news </a>
-                  <a href="page_contact.html"> contact </a>
-                  <a href="#"> policy </a>
-                </div>
-              </div> -->
-              <div class="col-lg-3 text-lg-end d-none d-lg-block">
-                <div class="dropdown">
-                  <!-- <button
-                    class="border-0 bg-transparent p-0 text-white dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="ti-world me-1"></i> ENG
-                  </button> -->
-                  <ul
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton1"
-                  >
-                    <li><a class="dropdown-item" href="#">FR</a></li>
-                    <li><a class="dropdown-item" href="#">AR</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-      <!--  End footer  -->
+        <div class="txt"><small>Currently</small><strong>Open for work</strong></div>
+      </div>
     </div>
+  </div>
 
-    <!--  start cursor  -->
-    <div class="mouse-cursor cursor-outer"></div>
-    <div class="mouse-cursor cursor-inner"></div>
-    <!--  end cursor  -->
+  <div class="marquee-wrap">
+    <div class="wrap" style="padding:0;overflow:hidden;">
+      <div class="marquee-track">
+        <span>React<i>●</i>Laravel<i>●</i>PHP<i>●</i>MySQL<i>●</i>JavaScript<i>●</i>Bootstrap<i>●</i>AJAX<i>●</i>jQuery<i>●</i></span>
+        <span>React<i>●</i>Laravel<i>●</i>PHP<i>●</i>MySQL<i>●</i>JavaScript<i>●</i>Bootstrap<i>●</i>AJAX<i>●</i>jQuery<i>●</i></span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!--  Start to top button  -->
-    <a href="#" class="to_top bg-red1 text-white">
-      <i class="fa-solid fa-arrow-up"></i>
-    </a>
-    <!--  End to top button  -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <p class="pull">I'm Peace — a fullstack developer who cares as much about <span class="accent">how a site loads</span> as how it looks. I've shipped work for foundations, clinics, capital firms and small businesses who needed something that actually works.</p>
+      <div class="about-body">
+        <p>My process starts with the business problem, not the tech stack. Whether that's a nonprofit needing to raise more donations or a trading company needing an inventory system, I build the smallest thing that solves it well — then make it fast and easy to maintain.</p>
+      </div>
+      <div class="stack-tags">
+        <span>HTML &amp; CSS</span><span>JavaScript</span><span>React.js</span><span>PHP &amp; Laravel</span><span>MySQL</span><span>Bootstrap</span><span>REST APIs</span>
+      </div>
+    </div>
+    <div class="stat-col reveal">
+      <div class="stat"><div class="num" data-count="5"><span>0</span><span class="suffix">+</span></div><div class="label">Years of experience</div></div>
+      <div class="stat"><div class="num" data-count="30"><span>0</span><span class="suffix">+</span></div><div class="label">Projects delivered</div></div>
+      <div class="stat"><div class="num" data-count="20"><span>0</span><span class="suffix">+</span></div><div class="label">Happy clients</div></div>
+    </div>
+  </div>
+</section>
 
-    <!--  request  -->
-    <script src="common/assets/js/lib/jquery-3.0.0.min.js"></script>
-    <script src="common/assets/js/lib/jquery-migrate-3.0.0.min.js"></script>
-    <script src="common/assets/js/lib/bootstrap.bundle.min.js"></script>
-    <script src="common/assets/js/lib/wow.min.js"></script>
-    <script src="common/assets/js/lib/jquery.fancybox.js"></script>
-    <script src="common/assets/js/lib/lity.js"></script>
-    <script src="common/assets/js/lib/swiper8-bundle.min.js"></script>
-    <script src="common/assets/js/lib/jquery.waypoints.min.js"></script>
-    <script src="common/assets/js/lib/jquery.counterup.js"></script>
-    <script src="common/assets/js/lib/parallaxie.js"></script>
-    <!-- === apex chart === -->
-    <script src="common/assets/js/lib/apex_chart.js"></script>
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="tag">What I do</div>
+        <h2>Six ways I can move your project forward</h2>
+      </div>
+      <p>Pick one, or let's figure out which combination your project actually needs.</p>
+    </div>
+    <div class="services">
+      <div class="service-row reveal">
+        <div class="idx">01</div>
+        <h3>Website design &amp; build</h3>
+        <div class="desc">Marketing sites, landing pages and portfolios — designed, coded and optimized for speed from the first commit.</div>
+        <div class="arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="idx">02</div>
+        <h3>Web applications</h3>
+        <div class="desc">Dashboards, booking systems and internal tools built with React and Laravel, made to handle real usage.</div>
+        <div class="arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="idx">03</div>
+        <h3>E-commerce stores</h3>
+        <div class="desc">Product catalogs, checkout flows and inventory systems that make it easy to sell and easy to manage.</div>
+        <div class="arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="idx">04</div>
+        <h3>API &amp; backend integration</h3>
+        <div class="desc">Payment gateways, CRMs and third-party services connected cleanly to whatever you're already running.</div>
+        <div class="arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="idx">05</div>
+        <h3>UI/UX &amp; branding</h3>
+        <div class="desc">Interfaces designed around how people actually use the product, not just how it looks in a mockup.</div>
+        <div class="arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="idx">06</div>
+        <h3>Maintenance &amp; support</h3>
+        <div class="desc">Ongoing updates, monitoring and fixes so the site keeps working long after launch day.</div>
+        <div class="arrow"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- === Gsap === -->
-    <script src="common/assets/js/gsap_lib/gsap.min.js"></script>
-    <script src="common/assets/js/gsap_lib/ScrollSmoother.min.js"></script>
-    <script src="common/assets/js/gsap_lib/ScrollTrigger.min.js"></script>
-    <script src="common/assets/js/gsap_lib/SplitText.min.js"></script>
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="tag">Selected work</div>
+        <h2>A few projects I've shipped recently</h2>
+      </div>
+      <p>Sample visuals shown here — happy to walk through the live sites and case studies on a call.</p>
+    </div>
+    <div class="filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="nonprofit">Nonprofit</button>
+      <button class="filter-btn" data-filter="services">Services</button>
+       <button class="filter-btn" data-filter="fashion">Fashion</button>
+      <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+      <button class="filter-btn" data-filter="finance">Finance</button>
+      <button class="filter-btn" data-filter="commerce">Commerce</button>
+    </div>
+    <div class="grid-portfolio">
+      <a href="https://catalystmediafoundation.vercel.app/" target="_blank" class="pf-card wide reveal" data-cat="nonprofit">
+        <img src="catalystmedia.png" alt="Catalyst Media Foundation">
+        <div class="pf-overlay">
+          <span class="tag-pill">Nonprofit</span>
+          <h4>The Catalyst Media Foundation</h4>
+          <div class="view">Full-stack build · Donation platform →</div>
+        </div>
+      </a>
 
-    <!-- === home scripts === -->
-    <script src="common/assets/js/common_js.js"></script>
-    <script src="assets/js/home_6_scripts.js"></script>
-    <script src="asset/js/inner_pages.js"></script>
-  </body>
+
+      <a href="https://homesteadhealth.vercel.app/" target="_blank" class="pf-card reveal" data-cat="healthcare">
+        <img src="homestead.png" alt="Homestead Healthcare">
+        <div class="pf-overlay">
+          <span class="tag-pill">Healthcare</span>
+          <h4>Homestead Healthcare</h4>
+          <div class="view">Healthcare →</div>
+        </div>
+      </a>
+
+      <a href="https://body-armoured.netlify.app/" target="_blank" class="pf-card reveal" data-cat="healthcare">
+        <img src="body-armour.png" alt="Homestead Healthcare">
+        <div class="pf-overlay">
+          <span class="tag-pill">Gym</span>
+          <h4>Body Armoured</h4>
+          <div class="view">Gym Site →</div>
+        </div>
+      </a>
+      <a href="https://elysian-psi.vercel.app/" target="_blank" class="pf-card reveal" data-cat="finance">
+        <img src="elysian.png" alt="Elysian Capital">
+        <div class="pf-overlay">
+          <span class="tag-pill">Finance</span>
+          <h4>Elysian Capital</h4>
+          <div class="view">Investor site →</div>
+        </div>
+      </a>
+
+      <a href="https://g-h-m-cuisine-g6vb.vercel.app/" target="_blank" class="pf-card reveal" data-cat="services">
+        <img src="ghm.png" alt="G.H.M Cuisine">
+        <div class="pf-overlay">
+          <span class="tag-pill">Restaurant</span>
+          <h4>G.H.M Cuisine</h4>
+          <div class="view">Ordering site →</div>
+        </div>
+      </a>
+
+      <a href="https://jano-trading.vercel.app/" target="_blank" class="pf-card reveal" data-cat="commerce">
+        <img src="jano_trading_with_bgc.png" alt="Jano Trading">
+        <div class="pf-overlay">
+          <span class="tag-pill">Commerce</span>
+          <h4>Jano Trading</h4>
+          <div class="view">Inventory + storefront →</div>
+        </div>
+      </a>
+
+      <a href="https://abdul-b-international.vercel.app/" target="_blank" class="pf-card reveal" data-cat="fashion">
+        <img src="abdul-b-international.png" alt="Jano Trading">
+        <div class="pf-overlay">
+          <span class="tag-pill">Fashion</span>
+          <h4>Abdul B International</h4>
+          <div class="view">Barbing Services →</div>
+        </div>
+      </a>
+
+      <a href="https://bushan.vercel.app/" target="_blank" class="pf-card reveal" data-cat="commerce">
+        <img src="bushan.png" alt="Jano Trading">
+        <div class="pf-overlay">
+          <span class="tag-pill">Car</span>
+          <h4>Bushan</h4>
+          <div class="view">Car Services →</div>
+        </div>
+      </a>
+
+      <a href="https://mtlondonservices.co.uk/" target="_blank" class="pf-card reveal" data-cat="services">
+        <img src="mtlondon.png" alt="Jano Trading">
+        <div class="pf-overlay">
+          <span class="tag-pill">Facilities Management</span>
+          <h4>M & T London Services</h4>
+          <div class="view">Cleaning Services →</div>
+        </div>
+      </a>
+
+      <a href="https://jaytec.com.ng/onwardcars/" target="_blank" class="pf-card reveal" data-cat="commerce">
+        <img src="onward.png" alt="Jano Trading">
+        <div class="pf-overlay">
+          <span class="tag-pill">Cars</span>
+          <h4>Onward Cars</h4>
+          <div class="view">Car Services →</div>
+        </div>
+      </a>
+
+
+      <a href="https://californiamotoc-9pfv.vercel.app/" target="_blank" class="pf-card reveal" data-cat="commerce">
+        <img src="californiaupdate.png" alt="Jano Trading">
+        <div class="pf-overlay">
+          <span class="tag-pill">Commerce</span>
+          <h4>Jano Trading</h4>
+          <div class="view">Inventory + storefront →</div>
+        </div>
+      </a>
+
+       <a href="https://jaytec.com.ng/Arise-Thrift/index.php" target="_blank" class="pf-card reveal" data-cat="commerce">
+        <img src="arise.png" alt="Jano Trading">
+        <div class="pf-overlay">
+          <span class="tag-pill">Commerce</span>
+          <h4>Arise Thrift</h4>
+          <div class="view">Inventory + storefront →</div>
+        </div>
+      </a>
+
+      <!-- <div class="pf-card reveal" data-cat="finance">
+        <img src="tender.png" alt="Tender Bonds Care">
+        <div class="pf-overlay">
+          <span class="tag-pill">Finance</span>
+          <h4>Tender Bonds Care</h4>
+          <div class="view">Client portal →</div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <div class="tag" style="color:var(--ink-dim);margin-bottom:20px;">Got a project in mind?</div>
+      <h2>Let's build something your users actually enjoy using.</h2>
+      <p>Usually respond within a day. No obligation — just tell me what you're trying to solve.</p>
+      <div class="contact-actions">
+        <a href="https://wa.me/2348062965917" class="btn-primary magnetic">Message on WhatsApp</a>
+        <a href="mailto:toyinafepeace@gmail.com" class="btn-ghost magnetic">Send an email</a>
+      </div>
+      <a href="mailto:toyinafepeace@gmail.com" class="contact-email">toyinafepeace@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© <span id="year"></span> Piztech. Built with care.</span>
+
+    <div class="footer-social">
+      <a href="https://github.com/Tapo2003">GitHub</a>
+      <a href="https://discord.com/users/866977371411185694">Discord</a>
+      <a href="https://x.com/Piz_tech">Twitter</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll progress
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+  });
+
+  // hero parallax (blobs drift + portrait tilt on mouse move)
+  const heroEl = document.querySelector('.hero');
+  const blobs = document.querySelectorAll('.blob');
+  const portraitEl = document.querySelector('.portrait-frame');
+  if (heroEl && window.matchMedia('(pointer:fine)').matches) {
+    heroEl.addEventListener('mousemove', (e) => {
+      const r = heroEl.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      blobs.forEach((b, i) => {
+        const strength = i === 0 ? 30 : -24;
+        b.style.transform = `translate(${px * strength}px, ${py * strength}px)`;
+      });
+      if (portraitEl) {
+        portraitEl.style.transform = `rotateY(${px * 6}deg) rotateX(${-py * 6}deg)`;
+      }
+    });
+    heroEl.addEventListener('mouseleave', () => {
+      if (portraitEl) portraitEl.style.transform = 'rotateY(0) rotateX(0)';
+    });
+  }
+
+  // cursor glow (desktop only)
+  const glow = document.getElementById('glow');
+  if (window.matchMedia('(pointer:fine)').matches) {
+    window.addEventListener('mousemove', (e) => {
+      glow.style.opacity = '1';
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('mouseleave', () => glow.style.opacity = '0');
+  }
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // services accordion
+  document.querySelectorAll('.service-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const isOpen = row.classList.contains('open');
+      document.querySelectorAll('.service-row').forEach(r => r.classList.remove('open'));
+      if (!isOpen) row.classList.add('open');
+    });
+  });
+
+  // portfolio filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.pf-card').forEach(card => {
+        const show = f === 'all' || card.dataset.cat === f;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  // magnetic buttons
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      btn.style.transform = `translate(${x * 0.18}px, ${y * 0.35}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0,0)';
+    });
+  });
+
+  // animated counters
+  const counters = document.querySelectorAll('.num');
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        const span = el.querySelector('span');
+        let cur = 0;
+        const step = Math.max(1, Math.round(target / 40));
+        const tick = () => {
+          cur += step;
+          if (cur >= target) { span.textContent = target; return; }
+          span.textContent = cur;
+          requestAnimationFrame(tick);
+        };
+        tick();
+        cio.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => cio.observe(c));
+
+
+ 
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+</script>
+
+</body>
 </html>
